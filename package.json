@@ -1,0 +1,13 @@
+{
+  "name": "szakdolgozat",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/KozmaAdam/szakdolgozat.git",
+  "author": "Ádám Kozma <adam.kozma@hbpogroup.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@playwright/test": "^1.49.0",
+    "@types/node": "^22.9.3"
+  },
+  "scripts": {}
+}
