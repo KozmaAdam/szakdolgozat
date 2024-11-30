@@ -24,8 +24,6 @@ test.describe.serial("Seasons", async () => {
     await page.locator('lpx-navbar a').filter({ hasText: 'Betting' }).click();
     await expect(page.getByRole('link', { name: 'Seasons' })).toBeVisible();
     await page.getByRole('link', { name: 'Seasons' }).click();
-    await page.getByRole('button', { name: 'admin' }).click();
-    await page.getByText('Log out').click();
   });
 
   test("Add new seasons", async ({ page }) => {
@@ -55,8 +53,6 @@ test.describe.serial("Seasons", async () => {
     await expect(page.getByRole('button', { name: 'Save' })).toBeEnabled();
     await page.getByRole('button', { name: 'Save' }).click();
     await expect(page.getByRole('cell', { name: 'Season1', exact: true })).toBeVisible();
-    await page.getByRole('button', { name: 'admin' }).click();
-    await page.getByText('Log out').click();
   });
 
   test("Edit seasons", async ({ page }) => {
@@ -82,8 +78,6 @@ test.describe.serial("Seasons", async () => {
     await page.getByLabel('Name').fill('Season1_Copy');
     await page.getByRole('button', { name: 'Save' }).click();
     await expect(page.getByRole('cell', { name: 'Season1_Copy', exact: true })).toBeVisible();
-    await page.getByRole('button', { name: 'admin' }).click();
-    await page.getByText('Log out').click();
   });
 
   test("Delete season", async ({ page }) => {
@@ -104,6 +98,9 @@ test.describe.serial("Seasons", async () => {
     await expect(page.locator('div.confirmation-dialog')).toBeVisible();
     await page.getByRole('button', { name: 'Yes' }).click();
     await expect(page.getByRole('cell', { name: 'Season1_Copy', exact: true })).not.toBeVisible();
+  });
+
+  test.afterEach(async ({ page }) => {
     await page.getByRole('button', { name: 'admin' }).click();
     await page.getByText('Log out').click();
   });
